@@ -21,6 +21,8 @@ def parsingRestaurnts(query):
     options.add_argument("--disable-gpu")
     options.add_argument("--no-sandbox")
 
+    print(os.path.dirname(os.path.abspath(__file__)))
+
     driver = webdriver.Chrome(_driver_url, chrome_options=options)
     driver.get(_search_url + query)
     html = driver.page_source
