@@ -3,7 +3,7 @@ from selenium import webdriver
 import os
 
 _driver_url = os.getenv(
-    'CHROME_PATH',
+    'GOOGLE_CHROME_SHIM',
     os.path.join(
         os.path.dirname(os.path.abspath(__file__)),
         'chromedriver'
@@ -14,7 +14,7 @@ _search_url = 'https://store.naver.com/restaurants/list?entry=pll&query='
 
 def parsingRestaurnts(query):
     options = webdriver.ChromeOptions()
-    options.binary_location = os.getenv('CHROME_BIN', None)
+    options.binary_location = os.getenv('GOOGLE_CHROME_BIN', None)
     options.add_argument('headless')
     options.add_argument('window-size=1920x1080')
     options.add_argument("disable-gpu")
