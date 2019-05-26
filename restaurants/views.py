@@ -1,8 +1,10 @@
 from restaurants.models import Rating
 from users.models import User, Friend
 from rest_framework import viewsets, generics, mixins, response, status
-from .crawler.cralwer import parsingRestaurnts
+from .crawler.cralwer import Chrome_driver
 from .serializers import RatingSerializer
+
+driver = Chrome_driver()
 
 
 class RestaurantView(viewsets.ViewSet):
@@ -11,7 +13,7 @@ class RestaurantView(viewsets.ViewSet):
 
         if query == '' or query == None:
             return response.Response(['Please enter keyword...'])
-        queryset = parsingRestaurnts(query)
+        queryset = driver.parsingRestaurnts(query)
         return response.Response(queryset)
 
 
